@@ -143,8 +143,8 @@
         </div>
     </div>
     <script>
-    function generateRecommendation() {
-        // Retrieving user inputs
+   function generateRecommendation(event) {
+        event.preventDefault();
         let dietaryPreference = document.getElementById("dietaryPreferences").value;
         let fitnessGoal = document.getElementById("fitnessGoals").value;
         let lifestyleFactor = document.getElementById("lifestyleFactors").value;
