@@ -8,137 +8,70 @@
 
 </head>
 <style>
-
-
-    body{
+    body {
         font-family: 'Inter', sans-serif;
         background: linear-gradient(135deg, #eef2f3, #dbe9f4);
         color: #333;
         margin: 0;
         padding: 20px;
+        display: flex;
+        justify-content: center;
         align-items: center;
         height: 100vh;
-        }
+    }
 
-        .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 25px;
-            background: white;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            text-align: left;
-            position: relative;
-        }
+    .container {
+        max-width: 600px;
+        width: 90%;
+        padding: 25px;
+        background: white;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        text-align: center; /* Centering the content */
+    }
 
-        h2 {
-            color: #2c3e50;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 20px;
+    h2 {
+        color: #2c3e50;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
 
-        }
+    label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: 600;
+        text-align: left;
+        color: #444;
+    }
 
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: 600;
-            text-align: left;
-            color: #444;
-        }
+    select, textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 5px auto 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        background-color: #f9f9f9;
+        transition: 0.3s;
+        display: block;
+    }
 
-        input[type="text"], textarea {
-            width: 95%;
-            padding: 12px;
-            margin: 5px 0 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 14px;
-            background-color: #f9f9f9;
-            transition: 0.3s;
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #2c3e50;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
 
-        }
-
-        input[type="text"]:focus, textarea:focus {
-            border: 1px solid #2c3e50;
-            box-shadow: 0 0 5px rgba(44, 62, 80, 0.2);
-        }
-
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #2c3e50;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-        }
-        button:hover {
-            background: #1f2d3d;
-            transform: scale(1.05);
-        }
-
-        .result-buttons {
-            display: flex;
-            flex-direction: column;
-            margin-top: 20px;
-        }
-
-        .result-buttons button {
-            margin-bottom: 10px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-            padding-top: 60px;
-
-        .modal-content {
-            background: white;
-            margin: auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 70%;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .close {
-            color: #777;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover{
-            color: black;
-            }
-
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul li {
-            padding: 5px 0;
-            font-size: 16px;
-
+    button:hover {
+        background: #1f2d3d;
+        transform: scale(1.05);
     }
 </style>
 <body>
@@ -146,120 +79,180 @@
         <h2>Personalized Diet & Workout Planner</h2>
         <form action="/recommendations" method="post">
             <label> Dietary Preferences</label>
-            <input type="text" name="dietary_preferences" placeholder="e.g vegetarian , high-protien" required>
+           <select id="dietaryPreferences">
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="omnivorous">Omnivorous (No Restrictions)</option>
+                <option value="high-protein">High-Protein</option>
+                <option value="paleo">Paleo</option>
+                <option value="keto">Keto</option>
+                <option value="balanced">Balanced Diet</option>
+                <option value="mediterranean">Mediterranean Diet</option>
+            </select>
 
             <label> Fitness Goals</label>
-            <input type="text" name="fitness_goals" placeholder="e.g weight loss , muscle gain" required>
+            <select id="fitnessGoals">
+                <option value="weight-loss">Weight Loss</option>
+                <option value="muscle-gain">Muscle Gain</option>
+                <option value="strength-training">Strength Training</option>
+                <option value="endurance">Endurance</option>
+                <option value="general-fitness">General Fitness</option>
+            </select>
 
             <label>Lifestyle Factors:</label>
-            <input type="text" name="lifestyle_factors" placeholder="e.g., active, sedentary" required>
+            <select id="lifestyleFactors">
+                <option value="active">Active</option>
+                <option value="moderate">Moderate</option>
+                <option value="sedentary">Sedentary</option>
+                <option value="frequent-travel">Frequent Traveler</option>
+            </select>
 
             <label>Dietary Restrictions:</label>
-            <input type="text" name="dietary_restrictions" placeholder="e.g., gluten-free, lactose-intolerant" required>
+            <select id="dietaryRestrictions">
+                <option value="none">None</option>
+                <option value="gluten-free">Gluten-Free</option>
+                <option value="lactose-intolerant">Lactose-Intolerant</option>
+                <option value="nut-allergy">Nut Allergy</option>
+                 <option value="soy-free">Soy-Free</option>
+                <option value="low-sodium">Low-Sodium</option>
+            </select>
 
             <label>Health Conditions:</label>
-            <input type="text" name="health_conditions" placeholder="e.g., diabetes, high blood pressure" required>
+            <select id="healthConditions">
+                <option value="none">None</option>
+                <option value="diabetes">Diabetes</option>
+                <option value="high-blood-pressure">High Blood Pressure</option>
+                <option value="heart-disease">Heart Disease</option>
+                <option value="thyroid-disorder">Thyroid Disorder</option>
+                <option value="pcos">PCOS / Hormonal Imbalance</option>
+                <option value="arthritis">Arthritis</option>
+                <option value="digestive-issues">Digestive Issues (IBS, Acid Reflux)</option>
+                <option value="kidney-disease">Kidney Disease</option>
+            </select>
 
             <label>Your Query:</label>
             <textarea name="user_query" placeholder="Describe your goal briefly" required></textarea>
 
             <button type="submit">Get Recommendations</button>
         </form>
-    </div>
-    <!-- Results Section -->
-    <div class="container">
-        {% if recommendations %}
-        <h2>Recommendations</h2>
-
-        <!-- Action Buttons -->
-        <div class="result-buttons">
-            <button onclick="showModal('dietModal')">View Diet Types</button>
-            <button onclick="showModal('workoutModal')">View Workout Options</button>
-            <button onclick="showModal('breakfastModal')">View Breakfast Ideas</button>
-            <button onclick="showModal('dinnerModal')">View Dinner Options</button>
-            <button onclick="showModal('tipsModal')">View Additional Tips</button>
+        <div id="result" style="display:none; margin-top: 20px; text-align: left;">
+            <h3>Recommendations:</h3>
+            <p id="diet"></p>
+            <p id="workout"></p>
+            <p id="tips"></p>
         </div>
-        {% endif %}
     </div>
-<!-- Modals -->
-<div id="dietModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('dietModal')">&times;</span>
-        <h3>Diet Types</h3>
-        <ul>
-            {% for diet in recommendations.diet_types %}
-                <li>{{ diet }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
+    <script>
+    function generateRecommendation() {
+        // Retrieving user inputs
+        let dietaryPreference = document.getElementById("dietaryPreferences").value;
+        let fitnessGoal = document.getElementById("fitnessGoals").value;
+        let lifestyleFactor = document.getElementById("lifestyleFactors").value;
+        let dietaryRestriction = document.getElementById("dietaryRestrictions").value;
+        let healthCondition = document.getElementById("healthConditions").value;
 
-<div id="workoutModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('workoutModal')">&times;</span>
-        <h3>Workout Options</h3>
-        <ul>
-            {% for workout in recommendations.workouts %}
-                <li>{{ workout }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
+        let dietPlan = "";
+        let workoutPlan = "";
+        let healthTips = "";
 
-<div id="breakfastModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('breakfastModal')">&times;</span>
-        <h3>Breakfast Ideas</h3>
-        <ul>
-            {% for breakfast in recommendations.breakfasts %}
-                <li>{{ breakfast }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
-
-<div id="dinnerModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('dinnerModal')">&times;</span>
-        <h3>Dinner Options</h3>
-        <ul>
-            {% for dinner in recommendations.dinners %}
-                <li>{{ dinner }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
-
-<div id="tipsModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('tipsModal')">&times;</span>
-        <h3>Additional Tips</h3>
-        <ul>
-            {% for tip in recommendations.additional_tips %}
-                <li>{{ tip }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
-
-<script>
-    function showModal(modalId) {
-        document.getElementById(modalId).style.display = "block";
-    }
-
-    function closeModal(modalId) {
-        document.getElementById(modalId).style.display = "none";
-    }
-
-    // Close modals when clicking outside of them
-    window.onclick = function(event) {
-        const modals = document.getElementsByClassName("modal");
-        for (let i = 0; i < modals.length; i++) {
-            if (event.target == modals[i]) {
-                modals[i].style.display = "none";
-            }
+        // Diet Plan Based on Dietary Preferences
+        if (dietaryPreference === "vegan") {
+            dietPlan = `
+            Breakfast: Chia seed pudding, smoothie bowl with plant-based protein.<br>
+            Lunch: Quinoa, black beans, steamed greens, and avocado.<br>
+            Dinner: Lentil soup with roasted vegetables.<br>
+            Snacks: Almond butter, coconut yogurt, and hummus with veggies.<br>`;
+        } else if (dietaryPreference === "vegetarian") {
+            dietPlan = `
+            Breakfast: Oatmeal with fruits and nuts or a tofu scramble.<br>
+            Lunch: Lentils, quinoa, and stir-fried vegetables.<br>
+            Dinner: Chickpea curry with brown rice.<br>
+            Snacks: Greek yogurt, hummus with carrots, protein bars.<br>`;
+        } else if (dietaryPreference === "keto") {
+            dietPlan = `
+            Breakfast: Scrambled eggs with cheese and avocado.<br>
+            Lunch: Grilled chicken salad with olive oil dressing.<br>
+            Dinner: Salmon with spinach and cauliflower mash.<br>
+            Snacks: Nuts, cheese, and dark chocolate.<br>`;
+        } else if (dietaryPreference === "paleo") {
+            dietPlan = `
+            Breakfast: Scrambled eggs with sweet potatoes.<br>
+            Lunch: Grilled chicken, leafy greens, and avocado.<br>
+            Dinner: Wild-caught fish with roasted vegetables.<br>
+            Snacks: Nuts, seeds, and fresh fruits.<br>`;
+        } else if (dietaryPreference === "mediterranean") {
+            dietPlan = `
+            Breakfast: Whole grain toast with avocado and olive oil.<br>
+            Lunch: Grilled fish, quinoa, and steamed vegetables.<br>
+            Dinner: Lentil soup, olives, and fresh salad.<br>
+            Snacks: Nuts, yogurt, and fresh fruits.<br>`;
+        } else {
+            dietPlan = `
+            Balanced Diet: Protein, complex carbs, and healthy fats for optimal health.<br>`;
         }
+
+        // Adjust Diet for Dietary Restrictions
+        if (dietaryRestriction !== "none") {
+            dietPlan += `<br>Note: Avoid foods containing ${dietaryRestriction.replace("-", " ")}.<br>`;
+        }
+
+        // Modify Diet for Health Conditions
+        if (healthCondition === "diabetes") {
+            dietPlan += `
+            <br>For Diabetes: Focus on low-GI foods like whole grains, lean protein, and healthy fats.<br>`;
+            healthTips += "Limit sugar intake, opt for complex carbs, and include fiber-rich foods.";
+        } else if (healthCondition === "high-blood-pressure") {
+            dietPlan += `
+            <br>For High BP: Reduce salt, include potassium-rich foods (bananas, spinach).<br>`;
+            healthTips += "Avoid processed foods and stay hydrated.";
+        } else if (healthCondition === "thyroid-disorder") {
+            dietPlan += `
+            <br>For Thyroid Issues: Increase iodine-rich foods like seaweed and fish.<br>`;
+            healthTips += "Limit soy products and avoid processed sugars.";
+        } else if (healthCondition === "pcos") {
+            dietPlan += `
+            <br>For PCOS: Reduce processed carbs, include fiber-rich foods, and balance hormones with healthy fats.<br>`;
+            healthTips += "Avoid dairy and excess sugar.";
+        }
+
+        // Workout Recommendations Based on Fitness Goal
+        if (fitnessGoal === "weight-loss") {
+            workoutPlan = `
+            Cardio: Brisk walking, jogging, or cycling (5-6 times a week).<br>
+            Strength Training: Full-body workouts (3 times a week).<br>
+            Flexibility: Yoga or stretching.<br>`;
+            healthTips += " Stay in a calorie deficit, drink 3 liters of water daily.";
+        } else if (fitnessGoal === "muscle-gain") {
+            workoutPlan = `
+            Strength Training: Heavy weightlifting (4-5 times a week).<br>
+            Cardio: Light cardio (1-2 times a week for endurance).<br>
+            Recovery: Ensure muscle recovery with sleep and hydration.<br>`;
+            healthTips += " Increase protein intake and consume a calorie surplus.";
+        } else if (fitnessGoal === "endurance") {
+            workoutPlan = `
+            Training: Long-duration running, swimming, or cycling (4-5 times a week).<br>
+            Strength: Bodyweight exercises and plyometrics.<br>`;
+            healthTips += " Focus on hydration and electrolyte balance.";
+        } else {
+            workoutPlan = `
+            General Fitness: Mix of cardio and strength training (3-4 times a week).<br>
+            Active Lifestyle: Engage in sports like swimming, cycling, or hiking.<br>`;
+        }
+
+        // Modify Workouts for Lifestyle Factors
+        if (lifestyleFactor === "sedentary") {
+            workoutPlan += `<br>Extra Tip: Take regular walking breaks and stretch every hour.<br>`;
+        } else if (lifestyleFactor === "frequent-travel") {
+            workoutPlan += `<br>Travel Workouts: Body weight exercises, resistance bands, and hotel gym workouts.<br>`;
+        }
+
+        // Display Results
+        document.getElementById("diet").innerHTML = `<strong>Diet Plan:</strong><br>${dietPlan}`;
+        document.getElementById("workout").innerHTML = `<strong>Workout Plan:</strong><br>${workoutPlan}`;
+        document.getElementById("tips").innerHTML = `<strong>Health Tips:</strong> ${healthTips}`;
+        document.getElementById("result").style.display = "block";
     }
 </script>
+
 </body>
 </html>
